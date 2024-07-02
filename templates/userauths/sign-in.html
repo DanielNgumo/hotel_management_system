@@ -1,0 +1,227 @@
+{% extends 'partials/base.html' %}
+{% load static %}
+
+
+{% block content %}
+
+        <div class="container mt-5">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <img src="{% static 'img/featur-1.jpg' %}" alt="Feature Image" class="img-fluid">
+                </div>
+
+                <div class="col-md-6">
+                    <div class="card custom-card">
+                        <div class="card-body">
+                            <h5 class="card-title mb-4 custom-title">Create an Account</h5>
+
+
+                            <form action="" method="POST">
+                                {% csrf_token %}
+                                <label for="email"></label>
+                                <input type="email" placeholder=" Enter email" name="email">
+
+                                <label for="password"></label>
+                                <input type="password" placeholder=" Enter password" name="password">
+                                                             
+                                <!-- <div class="form-group">
+                                    <label for="username" class="custom-label">Username</label>
+                                    <input type="text" name="full_name" placeholder="Enter your full name">
+                                    {{ form.full_name }}
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="username" class="custom-label">Username</label>
+                                    <input type="text" name="username" placeholder="Enter your username">
+                                    {{ form.username }}
+                                </div>
+                                <div class="form-group">
+                                    <label for="email" class="custom-label">Email address</label>
+                                    <input type="text" name="email" placeholder="Enter your email">
+                                    {{ form.email}}
+                                </div>
+                                <div class="form-group">
+                                    <label for="password1" class="custom-label">Password</label>
+                                    <input type="password" name="password1" placeholder="Enter your password">
+                                    {{ form.password1 }}
+                                </div>
+                                <div class="form-group">
+                                    <label for="password2" class="custom-label">Confirm Password</label>
+                                    <input type="password" name="password2" placeholder="Confirm your password">
+                                    {{ form.password2 }}
+                                </div> -->
+                                <button type="submit" value="Register"
+                                    class="btn btn-primary btn-block custom-btn">Register</button>
+                            </form>
+
+                        </div>
+                    </div>
+                    <div class="mt-3 text-center">
+                        <p>Already have an account? <a href="" class="text-primary custom-link">Sign in</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <style>
+            .custom-card {
+                background-color: #ffffff;
+                border-radius: 15px;
+                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+                padding: 20px;
+            }
+
+            .custom-title {
+                color: #007bff;
+                font-size: 28px;
+                text-align: center;
+                font-weight: bold;
+            }
+
+            .custom-label {
+                color: #495057;
+                font-weight: bold;
+            }
+
+            .custom-input {
+                border-radius: 8px;
+                padding: 10px;
+                font-size: 16px;
+            }
+
+            .custom-btn {
+                background-color: #007bff;
+                border-color: #007bff;
+                border-radius: 8px;
+                padding: 10px;
+                font-size: 18px;
+                font-weight: bold;
+            }
+
+            .custom-btn:hover {
+                background-color: #0056b3;
+                border-color: #0056b3;
+            }
+
+            .custom-alert {
+                border-radius: 10px;
+                background-color: #d4edda;
+                color: #155724;
+                border-color: #c3e6cb;
+            }
+
+            .custom-link {
+                font-weight: bold;
+                color: #007bff;
+            }
+
+            .custom-link:hover {
+                text-decoration: underline;
+            }
+
+            .img-fluid {
+                border-radius: 15px;
+            }
+
+            .custom-card {
+                background-color: #f8f9fa;
+                border-radius: 10px;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            }
+
+            .custom-input {
+                border-radius: 5px;
+            }
+
+            .custom-btn {
+                background-color: #007bff;
+                border-color: #007bff;
+            }
+
+            .custom-btn:hover {
+                background-color: #0056b3;
+                border-color: #0056b3;
+            }
+
+            .custom-alert {
+                border-radius: 10px;
+                background-color: #d4edda;
+                color: #155724;
+                border-color: #c3e6cb;
+            }
+
+            .orange-box {
+                background-color: orange;
+                height: 200px;
+                border-radius: 10px;
+            }
+        </style>
+
+
+        <style>
+            .form-group {
+                margin-bottom: 1rem;
+            }
+
+            .custom-label {
+                display: block;
+                margin-bottom: 0.5rem;
+            }
+
+            /* Add styles for input fields (consider using a framework for more advanced styling) */
+            input[type="text"],
+            input[type="email"],
+            input[type="password"] {
+                padding: 0.5rem 1rem;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+                width: 100%;
+                display: block;
+            }
+
+            /* Style the button (consider using a framework for more advanced styling) */
+            .custom-btn {
+                background-color: #4CAF50;
+                /* Green */
+                border: none;
+                color: white;
+                padding: 15px 32px;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                font-size: 16px;
+                margin: 4px 2px;
+                cursor: pointer;
+                border-radius: 5px;
+            }
+
+            .form-group {
+                margin-bottom: 1rem;
+                /* Adjust as needed for vertical spacing */
+                margin-left: 1rem;
+                /* Add horizontal margin for spacing */
+                margin-right: 1rem;
+                /* Add horizontal margin for spacing */
+            }
+
+            .form-group {
+                margin-bottom: 1rem;
+                /* Adjust as needed for vertical spacing */
+            }
+
+            .form-input {
+                display: flex;
+                align-items: center;
+                /* Aligns label and input vertically */
+            }
+        </style>
+
+
+
+
+
+
+
+{% endblock content %}
