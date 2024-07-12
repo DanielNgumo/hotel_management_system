@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'hotel',
     'user_dashboard',
     'userauths',
+    'booking',
 
     # Third party apps need to be installed 
     'bootstrap5',

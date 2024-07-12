@@ -1,7 +1,13 @@
 from django.contrib import admin
 from hotel.models import Hotel, Booking, ActivityLog, StaffOnDuty,Room, RoomType,HotelGallery, HotelFaqs, HotelFeatures
 
+
+
+class HotelGalleryInline(admin.TabularInline):
+    model=HotelGallery
+
 class HotelAdmin(admin.ModelAdmin):
+    inlines=[HotelGalleryInline]
     list_display=['thumbnail','name','user', 'status']
     prepopulated_fields={"slug":("name",)}
 
@@ -18,10 +24,8 @@ class RoomAdmin(admin.ModelAdmin):
     list_display=['hotel','room_type','room_number', 'is_available','rid','date']
 
 class RoomTypeAdmin(admin.ModelAdmin):
-    list_display=['hotel','number_of_beds','room_capacity', 'date']
+    list_display=['hotel','number_of_beds','room_capacity', 'date','type']
 
-class HotelGalleryAdmin(admin.ModelAdmin):
-    list_display=['hotel','image','hgid']
 
 class HotelFaqsAdmin(admin.ModelAdmin):
     list_display=['hotel','question','answer', 'date']
@@ -37,7 +41,7 @@ admin.site.register(ActivityLog, ActivityLogAdmin)
 admin.site.register(StaffOnDuty, StaffOnDutyAdmin)
 admin.site.register(Room, RoomAdmin)
 admin.site.register(RoomType, RoomTypeAdmin)
-admin.site.register(HotelGallery, HotelGalleryAdmin)
+# admin.site.register(HotelGallery, HotelGalleryInline)
 admin.site.register(HotelFaqs, HotelFaqsAdmin)
 admin.site.register(HotelFeatures, HotelFeaturesAdmin)
 

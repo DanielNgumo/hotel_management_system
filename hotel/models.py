@@ -5,6 +5,7 @@ import shortuuid
 from django.utils.text import slugify
 from django.utils.html import mark_safe
 from django_ckeditor_5.fields import CKEditor5Field
+from taggit.managers import TaggableManager
 
 HOTEL_STATUS=(
     ("Draft","Draft"),
@@ -46,7 +47,7 @@ class Hotel(models.Model):
     email=models.EmailField(max_length=100, default="ngumodaniel80@gmail.com")
     status=models.CharField(max_length=20, choices=HOTEL_STATUS, default="Live")
 
-    tags=models.CharField(max_length=200, help_text="Separate tags with comma",default="Timboroa")
+    tags=TaggableManager( blank=True)
     views=models.IntegerField(default=0), 
     featured=models.BooleanField(default=False)
     hid=ShortUUIDField(unique=True, length=10, max_length=20, alphabet="abcdefjhijklmnopqrstuvwxyz")
@@ -66,6 +67,12 @@ class Hotel(models.Model):
 
     def thumbnail(self):
         return mark_safe("<img src='%s' width='50' height='50' style='object-fit:cover; border-radius:6px;'/>" %(self.image.url)) 
+    
+    def hotel_gallery(self):
+        return HotelGallery.objects.filter(hotel=self)
+
+    def hotel_room_types(self):
+        return RoomType.objects.filter(hotel=self)
     
 class HotelGallery(models.Model):
     hotel=models.ForeignKey(Hotel, on_delete=models.CASCADE)
@@ -118,7 +125,7 @@ class RoomType(models.Model):
         return f"{self.type}-{self.hotel.name}-{self.price}"
     
     class Meta:
-        verbose_name_plural="Hotel Type"
+        verbose_name_plural="Room Type"
 
     def room_count(self):
         Room.objects.filter(room_type=self).count()
@@ -141,7 +148,7 @@ class Room(models.Model):
 
 
     def __str__(self):
-        return f"{self.type}-{self.hotel.name}-{self.price}"
+        return f"{self.room_type.type}-{self.hotel.name}"
     
     class Meta:
         verbose_name_plural="Rooms"
